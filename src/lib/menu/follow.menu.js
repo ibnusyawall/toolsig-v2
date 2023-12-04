@@ -131,7 +131,8 @@ async function followMenu() {
             }
         }
     } catch (err) {
-        log(chalk.bold.red(`Your account is checkpoint!`))
+        // log(chalk.bold.red(`Your account is checkpoint!`))
+        log(chalk.bold.red(`Your account is checkpoint!`), String(err))
 
         var { confirm } = await inquirer.prompt({
             type: 'confirm',

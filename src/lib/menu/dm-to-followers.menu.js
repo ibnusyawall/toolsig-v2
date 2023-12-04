@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 import inquirer from 'inquirer'
 import _ from 'lodash'
+import path from 'node:path'
 import fs from 'fs'
 
 import { MainMenu } from './index.js'
@@ -41,7 +42,7 @@ async function dmToFollowers() {
     var { username, password, perExec, delayTime } = await inquirer.prompt(questions)
 
     try {
-        var inputMessage = fs.readFileSync('./../../dm-text.txt', { encoding: 'utf-8' })
+        var inputMessage = fs.readFileSync(path.resolve('dm-text.txt'), { encoding: 'utf-8' })
 
         var ig = new instagram(username, password);
         log(chalk.bold.yellow("Try to Login . . ."));
@@ -136,6 +137,7 @@ async function dmToFollowers() {
         }
     } catch (err) {
         log(chalk.bold.red(`Your account is checkpoint!`))
+        log(chalk.bold.red(`Your account is checkpoint!`), String(err))
 
         var { confirm } = await inquirer.prompt({
             type: 'confirm',
